@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+main {
+  height: 100vh;
+  background: #656781;
+  font-family: "poppins", sans-serif;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main img {
+  width: 400px;
+}
+
+main .introduction {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: opacity 0.5s ease-in;
+}
+
+main .introduction button,
+main .options button {
+  font-family: "poppins", sans-serif;
+  font-size: 1rem;
+  color: white;
+  background: #323441;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+main .match .score {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+main .match {
+  position: absolute;
+  height: 75vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-in 0.5s;
+}
+
+main .winner {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+main .options,
+main .hands {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.player-hand {
+  transform: rotateY(180deg);
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fade-in {
+  opacity: 1;
+  pointer-events: all;
+}
