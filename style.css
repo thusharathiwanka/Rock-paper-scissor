@@ -1,3 +1,4 @@
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +25,7 @@ p {
   padding: 1rem;
 }
 
+/* Main section */
 main {
   height: 100vh;
   background: #656781;
@@ -90,6 +92,7 @@ main .hands {
   justify-content: space-around;
 }
 
+/* Custom classes */
 .player-hand {
   transform: rotateY(180deg);
 }
@@ -104,6 +107,7 @@ main .hands {
   pointer-events: all;
 }
 
+/* Animations */
 @keyframes player-hand-shake {
   0% {
     transform: rotateY(180deg) translateY(0px);
