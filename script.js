@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+const status = document.querySelector(".status");
 
 const startGame = () => {
   const playBtn = document.querySelector(".introduction button");
@@ -14,8 +15,15 @@ const startGame = () => {
 
 const playMatch = () => {
   const options = document.querySelectorAll(".options button ");
+  const hands = document.querySelectorAll(".hands img");
   const playerHand = document.querySelector(".player-hand");
   const computerHand = document.querySelector(".computer-hand");
+
+  hands.forEach((hand) => {
+    hand.addEventListener("animationend", () => {
+      hand.style.animation = "";
+    });
+  });
 
   const computerOptions = ["Rock", "Paper", "Scissor"];
 
@@ -24,20 +32,23 @@ const playMatch = () => {
       const computerRandom = Math.floor(Math.random() * 3);
       const computerChoice = computerOptions[computerRandom];
 
-      playerHand.src = `./img/${this.textContent}.png`;
-      computerHand.src = `./img/${computerChoice}.png`;
+      playerHand.src = "./img/rock.png";
+      computerHand.src = "./img/rock.png";
 
       playerHand.style.animation = "player-hand-shake 2s ease";
       computerHand.style.animation = "computer-hand-shake 2s ease";
 
-      compareHands(this.textContent, computerChoice);
+      setTimeout(() => {
+        playerHand.src = `./img/${this.textContent}.png`;
+        computerHand.src = `./img/${computerChoice}.png`;
+
+        compareHands(this.textContent, computerChoice);
+      }, 2000);
     });
   });
 };
 
 const compareHands = (playerChoice, computerChoice) => {
-  const status = document.querySelector(".status");
-
   if (playerChoice === computerChoice) {
     status.textContent = "It's a tie";
     return;
