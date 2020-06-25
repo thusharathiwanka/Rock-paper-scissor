@@ -17,18 +17,82 @@ const playMatch = () => {
   const playerHand = document.querySelector(".player-hand");
   const computerHand = document.querySelector(".computer-hand");
 
-  const computerOptions = ["rock", "paper", "scissor"];
+  const computerOptions = ["Rock", "Paper", "Scissor"];
 
   options.forEach((option) => {
     option.addEventListener("click", function () {
       const computerRandom = Math.floor(Math.random() * 3);
       const computerChoice = computerOptions[computerRandom];
-      compareHands(playerChoice, computerChoice);
+
+      playerHand.src = `./img/${this.textContent}.png`;
+      computerHand.src = `./img/${computerChoice}.png`;
+
+      playerHand.style.animation = "player-hand-shake 2s ease";
+      computerHand.style.animation = "computer-hand-shake 2s ease";
+
+      compareHands(this.textContent, computerChoice);
     });
   });
 };
 
-const compareHands = (playerChoice, computerChoice) => {};
+const compareHands = (playerChoice, computerChoice) => {
+  const status = document.querySelector(".status");
+
+  if (playerChoice === computerChoice) {
+    status.textContent = "It's a tie";
+    return;
+  }
+
+  if (playerChoice === "Rock") {
+    if (computerChoice === "Scissor") {
+      status.textContent = "Player wins";
+      playerScore++;
+      updateScore();
+      return;
+    } else {
+      status.textContent = "Computer wins";
+      computerScore++;
+      updateScore();
+      return;
+    }
+  }
+
+  if (playerChoice === "Paper") {
+    if (computerChoice === "Rock") {
+      status.textContent = "Player wins";
+      playerScore++;
+      updateScore();
+      return;
+    } else {
+      status.textContent = "Computer wins";
+      computerScore++;
+      updateScore();
+      return;
+    }
+  }
+
+  if (playerChoice === "Scissor") {
+    if (computerChoice === "Paper") {
+      status.textContent = "Player wins";
+      playerScore++;
+      updateScore();
+      return;
+    } else {
+      status.textContent = "Computer wins";
+      computerScore++;
+      updateScore();
+      return;
+    }
+  }
+};
+
+const updateScore = () => {
+  const playScore = document.querySelector(".player-score p");
+  const comScore = document.querySelector(".computer-score p");
+
+  playScore.textContent = playerScore;
+  comScore.textContent = computerScore;
+};
 
 startGame();
 playMatch();
